@@ -86,6 +86,9 @@ public class Job {
 
     @Override
     public String toString() {
+        if (this.getName() == null && this.getEmployer() == null && this.getLocation() == null && this.getPositionType() == null && this.getCoreCompetency() == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
         return "\n" +
                 "ID: " + id + "\n" +
                 "Name: " + ((this.getName() == null) ? "Data not available" : this.getName()) + "\n" +

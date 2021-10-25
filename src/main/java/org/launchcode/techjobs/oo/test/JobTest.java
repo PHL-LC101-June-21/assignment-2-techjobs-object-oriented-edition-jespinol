@@ -93,4 +93,14 @@ public class JobTest {
         assertEquals(toStringOut, desired);
     }
 
+    @Test
+    public void testJobOnlyContainsIDFieldPrintsSpecialMessage(){
+        Job jobEmpty = new Job();
+        Job jobComplete = new Job("Product tester", new Employer("ACME"),
+                new Location("Desert"), new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertEquals(jobEmpty.toString(), "OOPS! This job does not seem to exist.");
+        assertTrue(jobComplete.toString() != "OOPS! This job does not seem to exist.");
+    }
+
 }
