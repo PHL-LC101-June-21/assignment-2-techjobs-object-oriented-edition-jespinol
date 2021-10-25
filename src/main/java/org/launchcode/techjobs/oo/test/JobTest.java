@@ -59,8 +59,8 @@ public class JobTest {
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
         String toStringOut = job6.toString();
-        assertEquals(toStringOut.startsWith("\n"), true);
-        assertEquals(toStringOut.endsWith("\n"), true);
+        assertEquals(toStringOut.charAt(0), '\n');
+        assertEquals(toStringOut.charAt(toStringOut.length() - 1), '\n');
     }
 
     @Test
@@ -69,28 +69,28 @@ public class JobTest {
                 new Location("c"), new PositionType("d"),
                 new CoreCompetency("e"));
         String toStringOut = job7.toString();
-        String desired = "ID: " + job7.getId() + "\n" +
+        String desired = "\n" +"ID: " + job7.getId() + "\n" +
                 "Name: a" + "\n" +
                 "Employer: b" + "\n" +
                 "Location: c" + "\n" +
                 "Position Type: d" + "\n" +
                 "Core Competency: e";
-        assertTrue(toStringOut.contains(desired));
+        assertEquals(toStringOut, desired);
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job job8 = new Job("a", new Employer("b"),
-                new Location("c"), new PositionType(null),
-                new CoreCompetency());
+                new Location("c"), new PositionType(""),
+                new CoreCompetency(""));
         String toStringOut = job8.toString();
-        String desired = "ID: " + job8.getId() + "\n" +
+        String desired = "\n" + "ID: " + job8.getId() + "\n" +
                 "Name: a" + "\n" +
                 "Employer: b" + "\n" +
                 "Location: c" + "\n" +
                 "Position Type: Data not available" + "\n" +
                 "Core Competency: Data not available";
-        assertTrue(toStringOut.contains(desired));
+        assertEquals(toStringOut, desired);
     }
 
 }
