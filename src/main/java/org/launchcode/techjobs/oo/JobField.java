@@ -3,6 +3,9 @@ package org.launchcode.techjobs.oo;
 import java.util.Objects;
 
 public abstract class JobField {
+
+    // added this line to test new mac setup
+
     private int id;
     private static int nextId = 1;
     private String value;
